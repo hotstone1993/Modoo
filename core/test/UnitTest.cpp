@@ -7,7 +7,7 @@
 
 
 TEST_CASE("InferenceEngine Accuracy", "InferenceEngine") {
-    SECTION( "CPU Accuracy" )
+    SECTION( "" )
     {
     }
 }
