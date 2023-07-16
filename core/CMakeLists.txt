@@ -16,7 +16,7 @@ endif()
 
 find_package(CUDA REQUIRED)
 
-add_library(${PROJECT_NAME} )
+add_library(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/context.cpp)
 
 set_target_properties(
 ${PROJECT_NAME}
@@ -27,7 +27,8 @@ PROPERTIES CXX_STANDARD 17
             CUDA_SEPARABLE_COMPILATION ON
             CUDA_RESOLVE_DEVICE_SYMBOLS ON)
 
-target_include_directories(${PROJECT_NAME} PUBLIC )
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
+                                                    ${CMAKE_CURRENT_SOURCE_DIR}/utils)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE ${TORCH_LIBRARIES}
                                             ${CUDART_LIBRARY})
