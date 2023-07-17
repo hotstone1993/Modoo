@@ -4,7 +4,10 @@ project(core-test LANGUAGES CXX CUDA)
 
 find_package(Catch2 3 REQUIRED)
 
-add_executable(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/UnitTest.cpp)
+set(UTILS_TEST ${CMAKE_CURRENT_SOURCE_DIR}/utils/test_id_generator.cpp)
+
+add_executable(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/test_context.cpp
+                                    ${UTILS_TEST})
 
 set_target_properties(
 ${PROJECT_NAME}

@@ -1,3 +1,4 @@
+#include "id_generator.h"
 
 #include <string>
 #include <vector>
@@ -9,5 +10,6 @@
 TEST_CASE("InferenceEngine Accuracy", "InferenceEngine") {
     SECTION( "" )
     {
+        modoo::core::utils::IdGenerator;
     }
 }
