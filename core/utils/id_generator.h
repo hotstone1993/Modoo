@@ -19,6 +19,7 @@ namespace modoo::core::utils {
 
         int createId() {
             int newId = 0;
+            std::unique_lock<std::mutex>(m);
 
             do {
                 // TODO: make id    
@@ -29,6 +30,7 @@ namespace modoo::core::utils {
         }
 
         void resetCachedIds() {
+            std::unique_lock<std::mutex>(m);
             cache.clear();
         }
 
@@ -42,6 +44,7 @@ namespace modoo::core::utils {
         static std::once_flag initInstanceFlag;
         static IdGenerator* instance;
         std::unordered_set<int> cache;
+        std::mutex m;
     };
 }
 
