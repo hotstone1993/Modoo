@@ -6,7 +6,7 @@ find_package(Catch2 3 REQUIRED)
 
 set(UTILS_TEST ${CMAKE_CURRENT_SOURCE_DIR}/utils/test_id_generator.cpp)
 
-add_executable(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/test_context.cpp
+add_executable(${PROJECT_NAME} 
                                     ${UTILS_TEST})
 
 set_target_properties(
