@@ -16,7 +16,10 @@ endif()
 
 find_package(CUDA REQUIRED)
 
-add_library(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/context.cpp)
+set(UTILS_CPP ${CMAKE_CURRENT_SOURCE_DIR}/utils/id_generator.cpp)
+
+add_library(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/context.cpp
+                                ${UTILS_CPP})
 
 set_target_properties(
 ${PROJECT_NAME}

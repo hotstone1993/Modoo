@@ -3,6 +3,7 @@
 
 #include <mutex>
 #include <unordered_set>
+#include <random>
 
 // TODO: thread safty
 namespace modoo::core::utils {
@@ -12,27 +13,10 @@ namespace modoo::core::utils {
         IdGenerator(IdGenerator&&) = delete;
         IdGenerator& operator=(const IdGenerator&) = delete;
 
-        static IdGenerator& getInstance() {
-            std::call_once(initInstanceFlag, initInstance);
-            return *instance;
-        }
+        static IdGenerator& getInstance();
 
-        int createId() {
-            int newId = 0;
-            std::unique_lock<std::mutex>(m);
-
-            do {
-                // TODO: make id    
-            } while(cache.find(newId) != cache.end());
-            cache.insert(newId);
-
-            return newId;
-        }
-
-        void resetCachedIds() {
-            std::unique_lock<std::mutex>(m);
-            cache.clear();
-        }
+        int createId();
+        void resetCachedIds();
 
     private:
         IdGenerator() = default;
@@ -43,6 +27,10 @@ namespace modoo::core::utils {
 
         static std::once_flag initInstanceFlag;
         static IdGenerator* instance;
+        static std::mt19937 gen;
+        static std::random_device rd;
+
+        std::uniform_int_distribution<int> dist;
         std::unordered_set<int> cache;
         std::mutex m;
     };
