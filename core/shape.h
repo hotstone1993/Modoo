@@ -7,6 +7,7 @@ namespace modoo::core {
     class Shape {
     public:
         Shape(std::initializer_list<unsigned int> lst): shapes(lst) {};
+        Shape() = default;
         ~Shape() = default;
 
         bool operator=(const Shape& other) {
