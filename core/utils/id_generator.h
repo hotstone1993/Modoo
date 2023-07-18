@@ -5,7 +5,6 @@
 #include <unordered_set>
 #include <random>
 
-// TODO: thread safty
 namespace modoo::core::utils {
     class IdGenerator {
     public:

@@ -10,7 +10,7 @@ namespace modoo::core {
 
     class Device {
     public:
-        Device(): id (utils::IdGenerator::getInstance().createId()), type(DeviceType::CPU) {};
+        Device(DeviceType t = DeviceType::CPU): id (utils::IdGenerator::getInstance().createId()), type(t) {};
         ~Device() = default;
 
         bool operator=(const Device& other) {
@@ -23,7 +23,7 @@ namespace modoo::core {
     };
 
     inline void findAvailableDevice() {
-
+        
     }
 }
 

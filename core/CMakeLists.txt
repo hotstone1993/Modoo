@@ -31,7 +31,8 @@ PROPERTIES CXX_STANDARD 17
             CUDA_RESOLVE_DEVICE_SYMBOLS ON)
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
-                                                    ${CMAKE_CURRENT_SOURCE_DIR}/utils)
+                                                    ${CMAKE_CURRENT_SOURCE_DIR}/utils
+                                                    ${CMAKE_CURRENT_SOURCE_DIR}/layer)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE ${TORCH_LIBRARIES}
                                             ${CUDART_LIBRARY})
