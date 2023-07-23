@@ -15,6 +15,8 @@ else()
 endif()
 
 find_package(CUDA REQUIRED)
+find_package(Thrust REQUIRED CONFIG)
+thrust_create_target(Thrust)
 
 set(UTILS_CPP ${CMAKE_CURRENT_SOURCE_DIR}/utils/id_generator.cpp)
 
@@ -35,4 +37,5 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
                                                     ${CMAKE_CURRENT_SOURCE_DIR}/layer)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE ${TORCH_LIBRARIES}
-                                            ${CUDART_LIBRARY})
+                                            ${CUDART_LIBRARY}
+                                            Thrust)
