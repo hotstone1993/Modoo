@@ -1,5 +1,6 @@
-#include "context.h"
+#include "base_layer.h"
 
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -7,8 +8,8 @@
 #include "catch.hpp"
 
 
-TEST_CASE("InferenceEngine Accuracy", "InferenceEngine") {
-    SECTION( "" )
+TEST_CASE("BaseContext", "core") {
+    SECTION( "Initialization test" )
     {
         modoo::core::BaseContext context;
     }

@@ -4,9 +4,11 @@ project(core-test LANGUAGES CXX)
 
 find_package(Catch2 3 REQUIRED)
 
+set(MAIN_TEST ${CMAKE_CURRENT_SOURCE_DIR}/test_context.cpp)
 set(UTILS_TEST ${CMAKE_CURRENT_SOURCE_DIR}/utils/test_id_generator.cpp)
 
-add_executable(${PROJECT_NAME} ${UTILS_TEST})
+add_executable(${PROJECT_NAME} ${MAIN_TEST}
+                                ${UTILS_TEST})
 
 set_target_properties(
 ${PROJECT_NAME}
