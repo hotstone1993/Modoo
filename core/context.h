@@ -3,7 +3,6 @@
 
 #include "shape.h"
 #include "device.h"
-#include "framework.h"
 
 namespace modoo::core {
     class BaseContext {
@@ -14,7 +13,6 @@ namespace modoo::core {
     private:
         Device device;
         Shape shape;
-        FrameworkType frameworkType;
     };
 }
 
