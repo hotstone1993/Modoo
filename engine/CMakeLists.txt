@@ -1,28 +1,22 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.28)
 
 project(engine LANGUAGES CXX)
 
-# set(VCPKG_TARGET_ARCHITECTURE "x64")
+if(MSVC)
+  set(VCPKG_CMAKE_SYSTEM_NAME "")
+  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MD")
+else()
+  set(VCPKG_CMAKE_SYSTEM_NAME "Linux")
+  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
+  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
+endif()
 
-# if(MSVC)
-#   set(VCPKG_CMAKE_SYSTEM_NAME "")
-#   set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MD")
-# else()
-#   set(VCPKG_CMAKE_SYSTEM_NAME "Linux")
-#   set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
-#   set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
-# endif()
+add_executable(
+${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
 
-# add_library(
-# ${PROJECT_NAME} )
+set_target_properties(
+${PROJECT_NAME}
+PROPERTIES CXX_STANDARD 20
+            CXX_STANDARD_REQUIRED ON)
 
-# set_target_properties(
-# ${PROJECT_NAME}
-# PROPERTIES CXX_STANDARD 20
-#             CXX_STANDARD_REQUIRED ON)
-
-# target_include_directories(
-# ${PROJECT_NAME}
-# PUBLIC )
-
-# target_link_libraries(${PROJECT_NAME} PRIVATE )
+target_link_libraries(${PROJECT_NAME} PRIVATE )

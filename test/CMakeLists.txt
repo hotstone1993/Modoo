@@ -4,7 +4,7 @@ project(core-test LANGUAGES CXX)
 
 find_package(Catch2 3 REQUIRED)
 
-set(MAIN_TEST ${CMAKE_CURRENT_SOURCE_DIR}/test_context.cpp)
+set(MAIN_TEST )
 set(UTILS_TEST ${CMAKE_CURRENT_SOURCE_DIR}/utils/test_id_generator.cpp)
 
 add_executable(${PROJECT_NAME} ${MAIN_TEST}

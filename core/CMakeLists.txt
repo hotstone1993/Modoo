@@ -1,9 +1,6 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.28)
 
-project(core LANGUAGES CXX CUDA)
-
-set(VCPKG_TARGET_ARCHITECTURE "x64")
-set(CMAKE_CUDA_FLAGS_DEBUG "${CMAKE_CUDA_FLAGS_DEBUG} -G -src-in-ptx")
+project(core LANGUAGES CXX)
 
 if(MSVC)
   set(VCPKG_CMAKE_SYSTEM_NAME "")
@@ -14,10 +11,6 @@ else()
   set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
 endif()
 
-find_package(CUDA REQUIRED)
-find_package(Thrust REQUIRED CONFIG)
-thrust_create_target(Thrust)
-
 set(UTILS_CPP ${CMAKE_CURRENT_SOURCE_DIR}/utils/id_generator.cpp)
 
 add_library(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/context.cpp
@@ -25,18 +18,10 @@ add_library(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/context.cpp
 
 set_target_properties(
 ${PROJECT_NAME}
-PROPERTIES CXX_STANDARD 17
-            CUDA_STANDARD 17
-            CXX_STANDARD_REQUIRED ON
-            CUDA_ARCHITECTURES 75
-            CUDA_SEPARABLE_COMPILATION ON
-            CUDA_RESOLVE_DEVICE_SYMBOLS ON)
+PROPERTIES CXX_STANDARD 20
+            CXX_STANDARD_REQUIRED ON)
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
-                                                    ${CMAKE_CURRENT_SOURCE_DIR}/utils
-                                                    ${CMAKE_CURRENT_SOURCE_DIR}/layer
-                                                    ${CMAKE_CURRENT_SOURCE_DIR}/operator)
+                                                    ${CMAKE_CURRENT_SOURCE_DIR}/utils)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE ${TORCH_LIBRARIES}
-                                            ${CUDART_LIBRARY}
-                                            Thrust)
+target_link_libraries(${PROJECT_NAME} PRIVATE ${TORCH_LIBRARIES})
