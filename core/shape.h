@@ -10,7 +10,7 @@ namespace modoo::core {
         Shape() = default;
         ~Shape() = default;
 
-        bool operator=(const Shape& other) {
+        bool operator==(const Shape& other) {
             if (shapes.size() == other.shapes.size()) {
                 for(unsigned int i = 0; i < shapes.size(); ++i) {
                     if (shapes[i] != other.shapes[i]) {
@@ -20,6 +20,10 @@ namespace modoo::core {
             }
 
             return true;
+        }
+
+        bool operator!=(const Shape& other) {
+            return !(*this == other);
         }
 
     private:
