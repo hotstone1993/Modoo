@@ -4,7 +4,6 @@
 #include "shape.h"
 #include "device.h"
 #include "model_wrapper.h"
-#include "backend_utils.h"
 
 namespace modoo::core {
 

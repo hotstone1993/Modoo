@@ -4,14 +4,13 @@
 #include <type_traits>
 #include <string_view>
 
-#include "device.h"
+#include "context.h"
 
 namespace modoo::core::utils {
 
 template <typename Backend>
-concept CFoo = requires(Backend* backend, std::string_view path, core::Device device) {
-	{ backend->loadModel() } -> std::same_as<bool>;
+concept CFoo = requires(Backend* backend, std::string_view path, modoo::core::BaseContext* context) {
+	{ backend->loadModel(path, context) } -> std::same_as<bool>;
 };
-
 
 }
