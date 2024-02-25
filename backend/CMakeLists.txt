@@ -8,7 +8,7 @@ add_library(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/pytorch_backend.cpp
                                 ${UTILS_CPP})
 
 set_target_properties(
-${PROJECT_NAME} SHARED
+${PROJECT_NAME}
 PROPERTIES CXX_STANDARD 20
             CXX_STANDARD_REQUIRED ON)
 
