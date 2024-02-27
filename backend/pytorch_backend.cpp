@@ -19,3 +19,10 @@ void modoo::backend::pytorch::PyTorchBackend::loadModel(std::string_view path) {
         throw std::runtime_error(error + e.msg());
     }
 }
+
+
+void modoo::backend::pytorch::inference(Chunk* input, Chunk* output) {
+    torch::jit::IValue modelInput;
+    torch::jit::IValue modelOutputs;
+    modelOutputs = model.forward(modelInput);    
+}
