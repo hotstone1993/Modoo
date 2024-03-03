@@ -12,14 +12,14 @@ public:
     BaseContext();
     virtual ~BaseContext() = default;
 
-    void setModel(std::shared_ptr<ModelWrapper> model) {
+    void setModel(std::shared_ptr<ModelWrapper<modoo::backend::pytorch::PyTorchBackend>> model) {
         this->model = model;
     }
 
 private:
     Device device;
     Shape shape;
-    std::shared_ptr<ModelWrapper> model;
+    std::shared_ptr<ModelWrapper<modoo::backend::pytorch::PyTorchBackend>> model;
 };
 
 }

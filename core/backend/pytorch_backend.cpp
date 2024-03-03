@@ -8,7 +8,7 @@ modoo::backend::pytorch::PyTorchBackend::~PyTorchBackend() {
 }
 
 
-void modoo::backend::pytorch::PyTorchBackend::loadModel(std::string_view path) {
+bool modoo::backend::pytorch::PyTorchBackend::loadModel(std::string_view path) {
     try
     {
         model = torch::jit::load(path.data());
@@ -21,8 +21,7 @@ void modoo::backend::pytorch::PyTorchBackend::loadModel(std::string_view path) {
 }
 
 
-void modoo::backend::pytorch::inference(Chunk* input, Chunk* output) {
+bool modoo::backend::pytorch::PyTorchBackend::inference(const data::ModooData& input, data::ModooData* output) {
     torch::jit::IValue modelInput;
     torch::jit::IValue modelOutputs;
-    modelOutputs = model.forward(modelInput);    
 }

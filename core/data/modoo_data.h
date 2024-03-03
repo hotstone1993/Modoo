@@ -2,17 +2,17 @@
 
 #include <memory>
 
-#include "type"
+#include "type.h"
 
 namespace modoo::data {
 
-class Chunk {
+class ModooData {
 public:
-    Chunk(): type(DataType::FLOAT_32) {}
-    virtual ~Chunk() {}
+    ModooData(): data(nullptr), type(DataType::FLOAT_32) {}
+    virtual ~ModooData() {}
 
     void* getRawData() {
-        return data->data();
+        return data;
     }
 
     DataType getType() {
@@ -20,7 +20,7 @@ public:
     }
 
 private:
-    std::unique_ptr<void*> data;
+    void* data;
     DataType type;
 };
 

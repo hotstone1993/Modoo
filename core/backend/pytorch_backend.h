@@ -2,7 +2,8 @@
 
 #include <torch/script.h>
 #include <memory>
-#include "chunk.h"
+
+#include "modoo_data.h"
 
 namespace modoo::backend::pytorch {
 
@@ -11,8 +12,8 @@ class PyTorchBackend {
     PyTorchBackend();
     ~PyTorchBackend();
 public:
-    void loadModel(std::string_view path);
-    void inference(Chunk* input, Chunk* output);
+    bool loadModel(std::string_view path);
+    bool inference(const data::ModooData& input, data::ModooData* output);
 
 private:
     torch::jit::script::Module model;
