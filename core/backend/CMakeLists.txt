@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 3.28)
 
 project(pytorch_backend LANGUAGES CXX)
 
-find_package(Torch REQUIRED)
-
 add_library(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/pytorch_backend.cpp
                                 ${UTILS_CPP})
 

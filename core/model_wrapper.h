@@ -7,6 +7,8 @@
 // Backend Header
 #include "pytorch_backend.h"
 
+#define MODELS modoo::backend::pytorch::PyTorchBackend
+
 namespace modoo::core {
 
 template <utils::CBackend... TBackend>
