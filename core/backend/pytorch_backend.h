@@ -14,6 +14,7 @@ class PyTorchBackend {
 public:
     bool loadModel(std::string_view path);
     bool inference(const data::ModooData& input, data::ModooData* output);
+    bool validateInput();
 
 private:
     torch::jit::script::Module model;

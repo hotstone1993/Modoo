@@ -1,7 +1,6 @@
 #ifndef MODOO_CORE_CONTEXT
 #define MODOO_CORE_CONTEXT
 
-#include "shape.h"
 #include "device.h"
 #include "model_wrapper.h"
 
@@ -15,10 +14,10 @@ public:
     void setModel(std::shared_ptr<ModelWrapper<MODELS>> model) {
         this->model = model;
     }
+    
 
 private:
-    Device device;
-    Shape shape;
+    std::vector<Device> deviceList;
     std::shared_ptr<ModelWrapper<MODELS>> model;
 };
 
