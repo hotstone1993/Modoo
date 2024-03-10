@@ -1,5 +1,9 @@
 #include "pytorch_backend.h"
 
+#include <torch/csrc/jit/codegen/cuda/interface.h>
+#include <torch/csrc/jit/codegen/fuser/interface.h>
+#include <torch/csrc/jit/passes/tensorexpr_fuser.h>
+#include <torch/csrc/jit/runtime/graph_executor.h>
 
 modoo::backend::pytorch::PyTorchBackend::PyTorchBackend() {
 }
@@ -33,7 +37,7 @@ bool modoo::backend::pytorch::PyTorchBackend::inference(const data::ModooData& i
     torch::InferenceMode inferenceGuard{true};
 
     torch::jit::getProfilingMode() = false;
-    torch::jit::getExecutorMode() = false; 
+    torch::jit::getExecutorMode() = false;
     torch::jit::setTensorExprFuserEnabled(false);
 
     torch::NoGradGuard noGrad;
